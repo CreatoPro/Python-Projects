@@ -50,7 +50,7 @@ def takeCommand():
 
 if __name__=="__main__":
     wishMe()
-    takeCommand()
+    takeCommand(True)
     speak("Hello,")
     
 
