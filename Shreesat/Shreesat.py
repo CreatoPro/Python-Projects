@@ -60,8 +60,8 @@ def wishMe():
 class MainThread(QThread):
     def __init__(self):
         super(MainThread,self).__init__()
-    def run(self):
-        self.Taskexecution      
+    # def run(self):
+    #     self.Taskexecution      
     def takecommand(self):
         r = sr.Recognizer()
         with sr.Microphone() as source:
@@ -83,14 +83,17 @@ class MainThread(QThread):
         except Exception as e:
             print("Say that again please....")
             return "None"
+        query = query.lower()
         return query 
         
+    def run(self):
+        self.Taskexecution()
 
     def Taskexecution(self):
         wishMe()
         speak("Rinku Online")
         speak("Tell me, I am listening")
-        while(True):
+        while True:
         
             self.query = self.takecommand().lower()
 
@@ -274,7 +277,6 @@ class MainThread(QThread):
 startExecution = MainThread() 
 
 class Main(QMainWindow):
-    
     def __init__(self):
         super().__init__()
         self.ui = Ui_Rinku()
@@ -286,7 +288,7 @@ class Main(QMainWindow):
         self.ui.movie = QtGui.QMovie(r"F:\Python projects\Shreesat\Gui\Images\d8sothe-cb2ea492-6d7f-4916-a9bd-4088abfa0103.gif")
         self.ui.label.setMovie(self.ui.movie)
         self.ui.movie.start()
-        timer=QTimer(self)
+        timer = QTimer(self)
         timer.timeout.connect(self.showTime)
         timer.start(1000)
         startExecution.start()
