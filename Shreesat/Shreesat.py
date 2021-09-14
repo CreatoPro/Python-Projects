@@ -83,7 +83,7 @@ class MainThread(QThread):
         except Exception as e:
             print("Say that again please....")
             return "None"
-        return query
+        return query 
         
 
     def Taskexecution(self):
@@ -91,7 +91,7 @@ class MainThread(QThread):
         speak("Rinku Online")
         speak("Tell me, I am listening")
         while(True):
-        # if 1:
+        
             self.query = self.takecommand().lower()
 
             if "open notepad" in self.query:
@@ -274,6 +274,7 @@ class MainThread(QThread):
 startExecution = MainThread() 
 
 class Main(QMainWindow):
+    
     def __init__(self):
         super().__init__()
         self.ui = Ui_Rinku()
@@ -291,17 +292,17 @@ class Main(QMainWindow):
         startExecution.start()
 
     def showTime(self):
-        current_time = QTime.currentTime
-        current_date = QDate.currentDate
+        current_time = QTime.currentTime()
+        current_date = QDate.currentDate()
         label_time = current_time.toString('hh:mm:ss')
-        label_date = current_date.toString(Qt.ISOdate)
+        label_date = current_date.toString(Qt.ISODate)
         self.ui.textBrowser.setText(label_date)
         self.ui.textBrowser_2.setText(label_time)
         
 app = QApplication(sys.argv)
-Rinku = Main()
-Rinku.show()
-exit(app.exec_())
+jarvis = Main()
+jarvis.show()
+sys.exit(app.exec_())
 
        
 
