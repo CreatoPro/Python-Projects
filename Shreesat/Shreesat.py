@@ -2,6 +2,7 @@ from math import trunc
 import os
 from sys import path
 import sys
+from types import MappingProxyType
 from urllib.parse import SplitResult
 import pyttsx3
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -29,6 +30,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import * 
 from PyQt5.uic import loadUiType
 from RinkuUI import Ui_Rinku
+import operator
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -54,6 +57,7 @@ def wishMe():
 
     else:
         speak("Good Evening!")
+
 
 
 
@@ -87,7 +91,16 @@ class MainThread(QThread):
         return query 
         
     def run(self):
-        self.Taskexecution()
+        # self.Taskexecution()
+        speak('please say wakeup to continue')
+        while True:
+            self.query = self.takecommand()
+            if 'wake up' in self.query or 'are you there' in self.query or 'hello rinku' in self.query:
+                self.Taskexecution()
+            if 'stop' in self.query or 'rinku stop' in self.query:
+                speak('thank you for talking to me. just start me if you need me')
+                sys.exit()    
+            
 
     def Taskexecution(self):
         wishMe()
@@ -101,13 +114,16 @@ class MainThread(QThread):
                 speak("nahi kholungee")
                 npath = "C:\\WINDOWS\\system32\\notepad.exe"
                 os.startfile(npath)
-            # elif "how are you" in query():
+            if 'stop' in self.query or 'rinku stop' in self.query:
+                speak('thank you for talking to me. just start me if you need me')
+                sys.exit()  
+            elif "sleep now" in self.query:
+                speak('i am going to sleep. you can say wakeup to continue')
+                break;
+            # elif "how are you" in self.query():
             #     speak("i am always fine,may I know how can i help you")
-
-            elif "wake up rinku" in self.query:
-                speak('I am listening')
-            elif "hello rinku" in self.query:
-                speak('hello, how are you')
+            # elif "hello rinku" in self.query:
+            #     speak('hello, how are you')
             
             elif(( "open command prompt" in self.query) or ( "open cmd" in self.query)):
                 speak("Naahi")
@@ -122,6 +138,7 @@ class MainThread(QThread):
                         break
                 cap.release()
                 cv2.destroyAllWindows()
+            
             elif"close camera" in self.query:
                 speak('closing camera')
                 os.system("taskkill /f /im camera.exe")
@@ -141,9 +158,6 @@ class MainThread(QThread):
                 speak("OK")
                 pg.moveTo(x=28, y=1052, duration=2)
                 pg.click()
-            elif 'rinku stop' in self.query:
-                speak('Thank you for talking to me, just start me if you need me')
-                break;
             elif 'close notepad' in self.query:
                 speak('closing notepad')
                 os.system("taskkill /f /im notepad.exe")
@@ -211,6 +225,31 @@ class MainThread(QThread):
                 searchbox.send_keys('Shreesat Sahu')
             elif 'type what i say' in self.query:
                 speak('Speak what you want to say')
+
+            elif "do some calculations" in self.query or "can you calculate" in self.query:            
+                r = sr.Recognizer()
+                with sr.Microphone() as source:
+                    speak("Say what you want to calculate, example: 3 plus 3")
+                    print("listening.....")
+                    r.adjust_for_ambient_noise(source)
+                    audio = r.listen(source)
+                my_string=r.recognize_google(audio)
+                print(my_string)
+                def get_operator_fn(op):
+                    return {
+                        '+' : operator.add,
+                        '-' : operator.sub,
+                        'x' : operator.mul,
+                        'divided' :operator.__truediv__,
+                        'Mod' : operator.mod,
+                        'mod' : operator.mod,
+                        '^' : operator.xor,
+                        }[op]
+                def eval_binary_expr(op1, oper, op2):
+                    op1,op2 = int(op1), int(op2)
+                    return get_operator_fn(oper)(op1, op2)
+                print(eval_binary_expr(*(my_string.split())))
+
             
             elif 'attend online classes' in self.query:
                 speak("attending online classes")
@@ -274,6 +313,9 @@ class MainThread(QThread):
                 pg.typewrite(f'{typing}')
                 speak('done')
 
+                               
+
+
 startExecution = MainThread() 
 
 class Main(QMainWindow):
@@ -285,7 +327,8 @@ class Main(QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.close)
 
     def StartTask(self):
-        self.ui.movie = QtGui.QMovie(r"F:\Python projects\Shreesat\Gui\Images\d8sothe-cb2ea492-6d7f-4916-a9bd-4088abfa0103.gif")
+        # self.ui.movie = QtGui.QMovie(r"F:\Python projects\Shreesat\Gui\Images\d8sothe-cb2ea492-6d7f-4916-a9bd-4088abfa0103.gif")
+        self.ui.movie = QtGui.QMovie(r"Shreesat\d8sothe-cb2ea492-6d7f-4916-a9bd-4088abfa0103.gif")
         self.ui.label.setMovie(self.ui.movie)
         self.ui.movie.start()
         timer = QTimer(self)
@@ -302,9 +345,11 @@ class Main(QMainWindow):
         self.ui.textBrowser_2.setText(label_time)
         
 app = QApplication(sys.argv)
-jarvis = Main()
-jarvis.show()
+Rinku = Main()
+Rinku.show()
 sys.exit(app.exec_())
+
+
 
        
 

@@ -21,7 +21,7 @@ class Ui_Rinku(object):
         self.label.setGeometry(QtCore.QRect(-10, 10, 1131, 831))
         self.label.setAutoFillBackground(False)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../../Users/Shreesat/Desktop/GUI/d8sothe-cb2ea492-6d7f-4916-a9bd-4088abfa0103.gif"))
+        self.label.setPixmap(QtGui.QPixmap("d8sothe-cb2ea492-6d7f-4916-a9bd-4088abfa0103.gif"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -45,15 +45,17 @@ class Ui_Rinku(object):
         self.pushButton_2.setObjectName("pushButton_2")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser.setGeometry(QtCore.QRect(80, 20, 361, 71))
-        self.textBrowser.setStyleSheet("background-color: transparent;\n"
-"font: 75 10pt \"Rockwell Condensed\";\n"
-"border-radius: none;")
+        self.textBrowser.setStyleSheet("background:transparent;\n"
+"border-radius:none;\n"
+"color:white;\n"
+"font-size:20px;")
         self.textBrowser.setObjectName("textBrowser")
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(680, 20, 361, 71))
-        self.textBrowser_2.setStyleSheet("background-color: transparent;\n"
-"font: 75 10pt \"Rockwell Condensed\";\n"
-"border-radius: none;")
+        self.textBrowser_2.setStyleSheet("background:transparent;\n"
+"border-radius:none;\n"
+"color:white;\n"
+"font-size:20px;")
         self.textBrowser_2.setObjectName("textBrowser_2")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
