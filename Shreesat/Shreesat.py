@@ -21,6 +21,8 @@ import time
 from selenium import webdriver 
 from selenium.webdriver.chrome.options import Options
 import selenium
+import requests
+from bs4 import BeautifulSoup
 from GoogleNews import GoogleNews
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer, QTime, QDate, Qt
@@ -29,8 +31,10 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import * 
 from PyQt5.uic import loadUiType
+from wikipedia.wikipedia import search
 from RinkuUI import Ui_Rinku
 import operator
+
 
 
 engine = pyttsx3.init('sapi5')
@@ -92,12 +96,12 @@ class MainThread(QThread):
         
     def run(self):
         # self.Taskexecution()
-        speak('please say wakeup to continue')
+        speak('please say wakeup Rinku to continue')
         while True:
             self.query = self.takecommand()
             if 'wake up' in self.query or 'are you there' in self.query or 'hello rinku' in self.query:
                 self.Taskexecution()
-            if 'stop' in self.query or 'rinku stop' in self.query:
+            if 'terminate yourself' in self.query or 'rinku stop' in self.query:
                 speak('thank you for talking to me. just start me if you need me')
                 sys.exit()    
             
@@ -114,9 +118,10 @@ class MainThread(QThread):
                 speak("nahi kholungee")
                 npath = "C:\\WINDOWS\\system32\\notepad.exe"
                 os.startfile(npath)
-            if 'stop' in self.query or 'rinku stop' in self.query:
+            elif 'terminate yourself' in self.query or 'rinku stop' in self.query:
                 speak('thank you for talking to me. just start me if you need me')
                 sys.exit()  
+            
             elif "sleep now" in self.query:
                 speak('i am going to sleep. you can say wakeup to continue')
                 break;
@@ -124,7 +129,14 @@ class MainThread(QThread):
             #     speak("i am always fine,may I know how can i help you")
             # elif "hello rinku" in self.query:
             #     speak('hello, how are you')
-            
+            elif 'temperature' in self.query:
+                search = 'temperature here'
+                url = f"https://www.google.com/search?q={search}"
+                r = requests.get(url)
+                data = BeautifulSoup(r.text,"html.parser")
+                temp = data.find("div",class_="BNeawe").text
+                speak(f"current {search} is {temp} ")
+
             elif(( "open command prompt" in self.query) or ( "open cmd" in self.query)):
                 speak("Naahi")
                 os.system("start cmd")
@@ -274,6 +286,25 @@ class MainThread(QThread):
                 speak('stopping classes')
                 npath = r"F:\Python projects\Shreesat\Class Attender\Class_attender.py"
                 os.system("taskkill /f /im py.exe")
+            
+            elif 'battery percentage' in self.query or 'battery percent' in self.query :
+                import psutil
+                battery = psutil.sensors_battery()
+                percentage = battery.percent
+                speak(f'our system has {percentage} percentage battery')
+                if percentage ==100:
+                    speak("battery is charging now")
+                else:
+                    speak ("please charge the system")
+            
+            elif 'internet speed' in self.query:
+                import speedtest
+                st= speedtest.Speedtest()
+                dl = st.download()
+                up = st.upload()
+                speak(f'sir we have {dl} bit per second downloading speed and {up} bit per second uploading speed')
+                print(f'sir we have {dl} bit per second downloading speed and {up} bit per second uploading speed')
+                          
             
             elif "take a screenshot" in self.query:
                 speak('please tell me the name in which you want to save the file')
