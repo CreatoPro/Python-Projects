@@ -150,7 +150,8 @@ class MainThread(QThread):
                         break
                 cap.release()
                 cv2.destroyAllWindows()
-            
+                
+                           
             elif"close camera" in self.query:
                 speak('closing camera')
                 os.system("taskkill /f /im camera.exe")
@@ -314,6 +315,10 @@ class MainThread(QThread):
                 img = pg.screenshot()
                 img.save(f'{name}.png')
                 speak('i am done, please give me next command')
+            
+            elif 'mute' in self.query or 'unmute' in self.query:
+                speak('Ok')
+                pg.hotkey("volumemute")
             
             elif "type what i am saying" in self.query:
                 speak('tell i am listening')
