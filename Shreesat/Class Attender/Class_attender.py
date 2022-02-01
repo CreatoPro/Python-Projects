@@ -26,13 +26,17 @@ import pyaudio
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voices', voices[0].id)
-driver_path = (r"F:\Python projects\Shreesat\chromedriver_win32\chromedriver.exe")
+driver_path = (r"F:\Python projects\Python-Projects\Shreesat\chromedriver_win32\chromedriver.exe")
 
 def speak(audio):
     engine.say(audio)
     print(audio)
     engine.runAndWait()
-
+def zoom():
+        pg.hotkey('win')
+        time.sleep(5)
+        pg.typewrite('zoom')
+        pg.hotkey('enter')
 def monday1():
         speak('attending online class in 3')
         pg.PAUSE=0.2
@@ -55,7 +59,7 @@ def monday2():
         pg.PAUSE=0.2
         speak('1')
         driver = webdriver.Chrome(driver_path)
-        driver.get("https://cuchd-in.zoom.us/j/91248532136")
+        driver.get("https://cuchd-in.zoom.us/j/95955270106")
         pg.hotkey('win','up')
         pg.hotkey('left')
         pg.hotkey('enter')
@@ -120,13 +124,13 @@ def tuesday2():
         pg.PAUSE=0.2
         speak('1')
         driver = webdriver.Chrome(driver_path)
-        driver.get("https://cuchd-in.zoom.us/j/97927971024")
+        driver.get("https://cuchd-in.zoom.us/j/95575372381")
         pg.hotkey('win','up')
         pg.hotkey('left')
         pg.hotkey('enter')
         time.sleep(10)
         pg.click(x=793, y=464,duration=1)
-        pg.typewrite('123345')
+        pg.typewrite('039320')
         pg.PAUSE=3
         pg.hotkey('enter')
         time.sleep(10)
@@ -159,6 +163,8 @@ def tuesday5():
         pg.hotkey('win','up')
         pg.hotkey('left')
         pg.hotkey('enter')
+
+        
         pg.PAUSE=10
         pg.click(x=793, y=464,duration=1)
         pg.typewrite('432891')
@@ -214,12 +220,13 @@ def wednesday6():
         webbrowser.get(chrome_path)
         webbrowser.open_new_tab("https://teams.microsoft.com/l/meetup-join/19%3arb8tSGfFeuv9ZHlvF-_IxlTsMvSgBnG2AOwyatT8eKE1%40thread.tacv2/1629196570183?context=%7b%22Tid%22%3a%2234bd8bed-2ac1-41ae-9f08-4e0a3f11706c%22%2c%22Oid%22%3a%22ebe0900c-9df1-442d-9af1-a33e77beb7e1%22%7d")
         time.sleep(4)
-        pg.click(x=1234, y=274,duration=2)
+        pg.hotkey('win','up')
+        pg.hotkey('enter')
         pg.click(x=1221, y=526, duration=2)
         pg.PAUSE=4
         time.sleep(10)       
-        pg.click(x=944, y=717, duration=2)
-        pg.click(x=954, y=660,duration=2)
+        pg.click(x=944, y=659, duration=2)
+        pg.click(x=960, y=619,duration=2)
 
 def thursday1():
         speak('attending online class in 3')
@@ -279,12 +286,13 @@ def thursday6():
         webbrowser.get(chrome_path)
         webbrowser.open_new_tab("https://teams.microsoft.com/l/meetup-join/19%3arb8tSGfFeuv9ZHlvF-_IxlTsMvSgBnG2AOwyatT8eKE1%40thread.tacv2/1629196603927?context=%7b%22Tid%22%3a%2234bd8bed-2ac1-41ae-9f08-4e0a3f11706c%22%2c%22Oid%22%3a%22ebe0900c-9df1-442d-9af1-a33e77beb7e1%22%7d")
         time.sleep(4)
-        pg.click(x=1234, y=274,duration=2)
+        pg.hotkey('win','up')
+        pg.hotkey('enter')
         pg.click(x=1221, y=526, duration=2)
         pg.PAUSE=4
         time.sleep(10)       
-        pg.click(x=944, y=717, duration=2)
-        pg.click(x=954, y=660,duration=2)
+        pg.click(x=944, y=659, duration=2)
+        pg.click(x=960, y=619,duration=2)
 
 def friday6():
         speak('attending online class in 3')
@@ -296,12 +304,13 @@ def friday6():
         webbrowser.get(chrome_path)
         webbrowser.open_new_tab("https://teams.microsoft.com/l/meetup-join/19%3arb8tSGfFeuv9ZHlvF-_IxlTsMvSgBnG2AOwyatT8eKE1%40thread.tacv2/1629196645520?context=%7b%22Tid%22%3a%2234bd8bed-2ac1-41ae-9f08-4e0a3f11706c%22%2c%22Oid%22%3a%22ebe0900c-9df1-442d-9af1-a33e77beb7e1%22%7d")
         time.sleep(4)
-        pg.click(x=1234, y=274,duration=2)
+        pg.hotkey('win','up')
+        pg.hotkey('enter')
         pg.click(x=1221, y=526, duration=2)
         pg.PAUSE=4
         time.sleep(10)       
-        pg.click(x=944, y=717, duration=2)
-        pg.click(x=954, y=660,duration=2)
+        pg.click(x=944, y=659, duration=2)
+        pg.click(x=960, y=619,duration=2)
 def friday7():
         speak('attending online class in 3')
         pg.PAUSE=0.2
@@ -311,20 +320,22 @@ def friday7():
         driver = webdriver.Chrome(driver_path)
         driver.get("https://cuchd-in.zoom.us/j/94266154091?pwd=NnJDTGJLL245MERhRVV1TStnQkJrQT09")
         pg.hotkey('win','up')
-        pg.hotkey('left')
+        pg.hotkey('left') 
         pg.hotkey('enter')
         time.sleep(10)
         pg.hotkey('enter')
         
-        
+
+zoom()     
+
 #for monday
-schedule.every().monday.at('09:45').do(monday1)
-schedule.every().monday.at('10:35').do(monday2)
-schedule.every().monday.at('11:25').do(monday3)
-schedule.every().monday.at('13:05').do(monday5)
-schedule.every().monday.at('13:55').do(monday6)
+schedule.every().monday.at('09:40').do(monday1)
+schedule.every().monday.at('10:30').do(monday2)
+schedule.every().monday.at('11:20').do(monday3)
+schedule.every().monday.at('13:00').do(monday5)
+schedule.every().monday.at('13:50').do(monday6)
 #for tuesday
-schedule.every().tuesday.at('10:38').do(tuesday2)
+schedule.every().tuesday.at('10:35').do(tuesday2)
 schedule.every().tuesday.at('11:25').do(tuesday3)
 schedule.every().tuesday.at('13:05').do(tuesday5)
 schedule.every().tuesday.at('13:55').do(tuesday6)
@@ -343,8 +354,8 @@ schedule.every().friday.at('14:45').do(friday7)
 
 
 
+
 while True:
     schedule.run_pending()
     time.sleep(1)
-
 

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1121</width>
+    <width>1484</width>
     <height>864</height>
    </rect>
   </property>
@@ -41,8 +41,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1121</width>
-      <height>831</height>
+      <width>981</width>
+      <height>571</height>
      </rect>
     </property>
     <property name="text">
@@ -58,10 +58,10 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>650</y>
-      <width>93</width>
-      <height>28</height>
+      <x>1000</x>
+      <y>40</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -80,10 +80,10 @@ background-color: rgb(170, 255, 255);
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>650</y>
-      <width>93</width>
-      <height>28</height>
+      <x>1220</x>
+      <y>40</y>
+      <width>141</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -97,8 +97,8 @@ font: 75 10pt &quot;Rockwell Condensed&quot;;</string>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>20</y>
+      <x>1000</x>
+      <y>190</y>
       <width>361</width>
       <height>71</height>
      </rect>
@@ -106,14 +106,22 @@ font: 75 10pt &quot;Rockwell Condensed&quot;;</string>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;
 font: 75 10pt &quot;Rockwell Condensed&quot;;
-border-radius: none;</string>
+border: 1px solid white;
+</string>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Rockwell Condensed'; font-size:10pt; font-weight:72; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textBrowser_2">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>20</y>
+      <x>1000</x>
+      <y>110</y>
       <width>361</width>
       <height>71</height>
      </rect>
@@ -121,16 +129,83 @@ border-radius: none;</string>
     <property name="styleSheet">
      <string notr="true">background-color: transparent;
 font: 75 10pt &quot;Rockwell Condensed&quot;;
-border-radius: none;</string>
+border: 1px solid white;</string>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Rockwell Condensed'; font-size:10pt; font-weight:72; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;time&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1501</width>
+      <height>921</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>550</y>
+      <width>1461</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+font: 75 10pt &quot;Rockwell Condensed&quot;;
+border: 1px solid white;
+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>300</y>
+      <width>261</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>Images/radiohalo-800.gif</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_3</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>textBrowser</zorder>
+   <zorder>textBrowser_2</zorder>
+   <zorder>textBrowser_3</zorder>
+   <zorder>label_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1121</width>
+     <width>1484</width>
      <height>26</height>
     </rect>
    </property>
