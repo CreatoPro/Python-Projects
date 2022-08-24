@@ -90,7 +90,7 @@ def takecommand():
     with sr.Microphone() as source:
         print('listening.....')
         r.pause_threshold = 1
-        audio = r.listen(source, timeout=3, phrase_time_limit=8)
+        audio = r.listen(source, timeout=8, phrase_time_limit=5)
     try:
         print("Reconizing....")
         query = r.recognize_google(audio, language='en-in')
