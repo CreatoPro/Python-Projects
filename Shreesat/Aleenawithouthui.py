@@ -34,7 +34,7 @@ import psutil
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[1].id)
 chrome_path = r'C:\ Program Files (x86)\ Google\ Chrome\ Application\ chrome.exe %s'
 googlenews = GoogleNews()
 
@@ -90,7 +90,9 @@ def takecommand():
     with sr.Microphone() as source:
         print('listening.....')
         r.pause_threshold = 1
-        audio = r.listen(source, timeout=8, phrase_time_limit=5)
+        # audio = r.listen(source, timeout=5, phrase_time_limit=5)
+        audio = r.listen(source)
+
     try:
         print("Reconizing....")
         query = r.recognize_google(audio, language='en-in')
