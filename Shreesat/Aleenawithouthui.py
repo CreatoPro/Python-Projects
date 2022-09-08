@@ -90,7 +90,7 @@ def takecommand():
     with sr.Microphone() as source:
         print('listening.....')
         r.pause_threshold = 1
-        # audio = r.listen(source, timeout=5, phrase_time_limit=5)
+        # audio = r.listen(source, timeout=5, phrase_time_limit=6)
         audio = r.listen(source)
 
     try:
