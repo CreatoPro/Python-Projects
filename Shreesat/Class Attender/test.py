@@ -63,7 +63,7 @@ def friday6():
         speak("Wakeup")
         speak("Wakeup")
 
-# friday6()        
+friday6()        
 
  
  
@@ -71,7 +71,7 @@ def friday6():
 
 
 #for friday
-schedule.every().tuesday.at('11:55').do(friday6)
+# schedule.every().tuesday.at('11:55').do(friday6)
 
 
 

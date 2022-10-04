@@ -1,5 +1,7 @@
+# from asyncio.timeouts import timeout
 from math import trunc
 import os
+from socket import timeout
 from subprocess import run
 from sys import path
 import sys
@@ -87,11 +89,11 @@ def Download(link):
    
 def takecommand():
     r = sr.Recognizer()
-    with sr.Microphone() as source:
+    with sr.Microphone(1) as source:
         print('listening.....')
         r.pause_threshold = 1
-        # audio = r.listen(source, timeout=5, phrase_time_limit=6)
-        audio = r.listen(source)
+        # audio = r.listen(source, timeout=1, phrase_time_limit=5,)
+        audio = r.listen(source, timeout=6)
 
     try:
         print("Reconizing....")
@@ -125,9 +127,9 @@ def run():
 
 def Taskexecution():
     wishMe()
-    speak("Aleena Online")
-    speak(f"Welcome Back, please wait I am checking systems. Our system has {percentage} percent battery. All processes are running fine")
-    speak("Tell me, How can I help you")
+    # speak("Aleena Online")
+    # speak(f"Welcome Back, please wait I am checking systems. Our system has {percentage} percent battery. All processes are running fine")
+    # speak("Tell me, How can I help you")
     while True:
     
         query = takecommand().lower()
@@ -436,7 +438,9 @@ def Taskexecution():
             pg.typewrite(f'{typing}')
             speak('done')
 
-run()
+Taskexecution()
+
+# run()
 
 
        
