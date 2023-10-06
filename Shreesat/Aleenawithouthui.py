@@ -89,7 +89,7 @@ def Download(link):
    
 def takecommand():
     r = sr.Recognizer()
-    with sr.Microphone(1) as source:
+    with sr.Microphone(2) as source:
         print('listening.....')
         r.pause_threshold = 1
         # audio = r.listen(source, timeout=1, phrase_time_limit=5,)
